@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-  <h1 class="text-center mb-4">روشتة جديدة</h1>
+    <h1 class="text-center mb-4">روشتة جديدة</h1>
 
     <div class="mb-3">
       <label for="patientName" class="form-label">اسم المريض:</label>
@@ -16,7 +16,10 @@
       </div>
       <div class="mb-3">
         <label for="medicamentName" class="form-label">اسم الدواء:</label>
-        <input v-model="medicament.name" type="text" class="form-control" id="medicamentName" placeholder="ادخل اسم الدواء" />
+        <!-- استخدام قائمة من الأدوية المحفوظة للمستخدم للاختيار -->
+        <select v-model="medicament.name" class="form-control" id="medicamentName" placeholder="اختر اسم الدواء">
+          <option v-for="storedMedicine in storedMedicines" :key="storedMedicine" :value="storedMedicine.name">{{ storedMedicine.name }}</option>
+        </select>
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">ملاحظات:</label>
@@ -40,6 +43,7 @@ export default {
     return {
       patientName: '',
       medicaments: [{ name: '', notes: '' }],
+      storedMedicines: JSON.parse(localStorage.getItem('medicines')) || [],
     };
   },
   methods: {
@@ -52,7 +56,7 @@ export default {
     generatePrescription() {
       const prescription = { patientName: this.patientName, medicaments: this.medicaments };
       localStorage.setItem('prescription', JSON.stringify(prescription));
-      this.$router.push('/prescription');
+      this.$router.push('/prescription/print');
     },
   },
 };

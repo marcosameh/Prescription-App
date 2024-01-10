@@ -2,21 +2,18 @@
   <div class="container mt-5">
     <div class="text-center mb-4">
       <h1 class="display-4 text-primary">{{ doctorName }}</h1>
-      <p class="lead">وصفة طبية</p>
     </div>
 
-    <div v-if="prescription.patientName" class="mb-3">
+    <!-- <div v-if="prescription.patientName" class="mb-3">
       <h4 class="mb-0">اسم المريض:</h4>
       <p class="patient-name">{{ prescription.patientName }}</p>
-    </div>
+    </div> -->
 
     <div v-for="(medicament, index) in prescription.medicaments" :key="index" class="mb-4">
       <div class="mb-3" v-if="medicament.name">
-        <h5 class="mb-0">اسم الدواء:</h5>
         <p class="medicament-name">{{ medicament.name }}</p>
       </div>
       <div class="mb-3" v-if="medicament.notes">
-        <h5 class="mb-0">ملاحظات:</h5>
         <p class="medicament-notes">{{ medicament.notes }}</p>
       </div>
     </div>

@@ -2,12 +2,12 @@
   <div class="container mt-5">
     <h1 class="text-center mb-4">روشتة </h1>
 
-    <router-link to="/medicines" class="btn btn-primary mb-2">
+    <router-link to="/medicines" class="btn btn-primary mb-3" style="font-size: 18px; margin-right: 10px;">
       <i class="fas fa-pills"></i> الأدوية
     </router-link>
 
-    <router-link to="/prescription/new" class="btn btn-success mb-2">
-      <i class="fas fa-file-prescription"></i>  روشتة جديدة
+    <router-link to="/prescription/new" class="btn btn-success mb-3" style="font-size: 18px;">
+      <i class="fas fa-file-prescription"></i> روشتة جديدة
     </router-link>
 
     <router-view></router-view>
