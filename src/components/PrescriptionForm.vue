@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">نموذج الوصفة الطبية</h1>
+  <h1 class="text-center mb-4">روشتة جديدة</h1>
 
     <div class="mb-3">
       <label for="patientName" class="form-label">اسم المريض:</label>
@@ -29,7 +29,7 @@
     </button>
 
     <button @click="generatePrescription" class="btn btn-primary">
-      <i class="fas fa-file-prescription"></i> انشاء الوصفة الطبية
+      <i class="fas fa-file-prescription"></i> طباعة الروشتة
     </button>
   </div>
 </template>
