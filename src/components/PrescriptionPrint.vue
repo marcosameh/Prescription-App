@@ -50,7 +50,7 @@
         prescription.patientName }}</p>
     </div>
 
-    <div class="row px-5 py-5 mt-5" :class="isPrintMode ? '' : 'justify-content-center'">
+    <div class="row px-5 py-3 mt-5" :class="isPrintMode ? '' : 'justify-content-center'">
       <div :class="isPrintMode?'col-12':'col-8'">
         <div v-for="(medicament, index) in prescription.medicaments" :key="index" class=" mb-4 d-flex">
           <div class="mb-3" v-if="medicament.name">
@@ -62,8 +62,7 @@
         </div>
       </div>
     </div>
-   
-    <div class="text-center mt-4 d-flex justify-content-center align-items-center" :style="{display: isPrintMode ? 'none !important' : 'block'}">
+    <div class="text-center mb-5 d-flex justify-content-center align-items-center" :style="{display: isPrintMode ? 'none !important' : 'block'}">
       <div class="bach-btn text-center ms-3">
        <router-link to="/prescription/new" class="btn back-button py-3 text-white"
         style="font-size: 18px; background-color: rgb(221, 148, 12);">
@@ -75,12 +74,12 @@
       </button>
   
     </div>
-    <div class="footer position-absolute bottom-0" :class="isPrintMode?'':'footer-position'">
+    <div class="footer" :class="isPrintMode?'footer-position':''">
          <div class="  border-black border-top ">
           <p class="fs-3"><strong>العنوان/</strong> شارع النصر امام بنك مصر الإسلامي بجوار بنزيمة عويد</p>
           <p class="fs-3"><strong>التليفون/</strong> 01026903168</p>
          </div>
-        </div>
+    </div>
   </div>
 </template>
 
@@ -149,7 +148,7 @@ body {
   background-color: #0056b3;
 }
 .footer-position{
- left: 184px;
- right: 184px;
+  position: absolute;
+  bottom: 0;
 }
 </style>
