@@ -10,12 +10,19 @@
 
     <div class="row justify-content-center">
       <div class="col-8">
-        <div class="mb-4">
-          <label for="patientName" class="form-label fs-4">اسم المريض:</label>
-          <input v-model="patientName" type="text" class="form-control py-3" id="patientName"
-            placeholder="ادخل اسم المريض" />
+        <div class="row">
+          <div class="col-6 mb-4">
+            <label for="doctorName" class="form-label fs-4">اسم الطبيب:</label>
+            <input v-model="doctorName" type="text" class="form-control py-3" id="doctorName"
+              placeholder="ادخل اسم الطبيب" />
+          </div>
+          <div class="col-6 mb-4">
+            <label for="patientName" class="form-label fs-4">اسم المريض:</label>
+            <input v-model="patientName" type="text" class="form-control py-3" id="patientName"
+              placeholder="ادخل اسم المريض" />
+          </div>
         </div>
-
+    
         <div v-for="(medicament, index) in medicaments" :key="index" class="mb-4 border rounded-3 p-3">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="mb-0">الدواء {{ index + 1 }}</h2>
@@ -25,14 +32,12 @@
           </div>
           <div class="mb-3">
             <label for="medicamentName" class="form-label fs-4">اسم الدواء:</label>
-            <!-- استخدام قائمة من الأدوية المحفوظة للمستخدم للاختيار -->
             <select v-model="medicament.name" class="form-control py-2 custom-select" id="medicamentName">
               <option value="" disabled selected hidden>اختر اسم الدواء</option>
               <option v-for="storedMedicine in storedMedicines" :key="storedMedicine" :value="storedMedicine.name">
                 {{ storedMedicine.name }}
               </option>
             </select>
-
           </div>
           <div class="mb-3">
             <label for="notes" class="form-label fs-4">ملاحظات:</label>
@@ -41,7 +46,7 @@
           </div>
         </div>
 
-       <div class="btns mb-4">
+       <div class="btns mb-4 text-center">
         <button @click="addMedicament" class="btn btn-success ms-3 py-3 px-4">
           <i class="fas fa-plus"></i> اضافة دواء
         </button>
@@ -59,6 +64,7 @@
 export default {
   data() {
     return {
+      doctorName: '',
       patientName: '',
       medicaments: [{ name: '', notes: '' }],
       storedMedicines: JSON.parse(localStorage.getItem('medicines')) || [],
@@ -72,7 +78,7 @@ export default {
       this.medicaments.splice(index, 1);
     },
     generatePrescription() {
-      const prescription = { patientName: this.patientName, medicaments: this.medicaments };
+      const prescription = { doctorName: this.doctorName, patientName: this.patientName, medicaments: this.medicaments };
       localStorage.setItem('prescription', JSON.stringify(prescription));
       this.$router.push('/prescription/print');
     },
@@ -81,41 +87,28 @@ export default {
 </script>
 
 <style scoped>
-/* Your component-specific styles here */
-/* Adding some basic styling for illustration purposes */
-
-.btn-sm {
-  font-size: 12px;
-  padding: 0.2rem 0.4rem;
-}
-.custom-select {
-    position: relative;
-    appearance: none;
-    padding-left: 2.5rem; /* Adjust padding to make space for the icon */
-    background: white url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="currentColor" d="M2 0L0 2h4zM2 5L0 3h4z"/%3E%3C/svg%3E') no-repeat 0.75rem center; /* Position the icon on the left */
-    background-size: 8px 10px;
-    color: #333; /* The color of the text inside the select */
+label {
+  color: #555;
 }
 
-.custom-select:focus {
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+input, textarea, select {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
 }
 
-.custom-select::-ms-expand {
-    display: none; /* Hide the default dropdown icon in IE */
+input:focus, textarea:focus, select:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Styling the default placeholder option */
-.custom-select option[disabled][hidden] {
-    color: #888;
+button {
+  font-size: 18px;
 }
 
-/* If you want to apply a different color when the dropdown is open */
-.custom-select:focus option[disabled][hidden] {
-    color: #aaa;
+.back-button {
+  background-color: #dd940c !important;
 }
-
-
 </style>
