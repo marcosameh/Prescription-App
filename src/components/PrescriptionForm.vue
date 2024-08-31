@@ -64,7 +64,7 @@
 export default {
   data() {
     return {
-      doctorName: '',
+      doctorName: localStorage.getItem('doctorName') || '',
       patientName: '',
       medicaments: [{ name: '', notes: '' }],
       storedMedicines: JSON.parse(localStorage.getItem('medicines')) || [],
@@ -74,12 +74,14 @@ export default {
     addMedicament() {
       this.medicaments.push({ name: '', notes: '' });
     },
+   
     removeMedicament(index) {
       this.medicaments.splice(index, 1);
     },
     generatePrescription() {
       const prescription = { doctorName: this.doctorName, patientName: this.patientName, medicaments: this.medicaments };
       localStorage.setItem('prescription', JSON.stringify(prescription));
+      localStorage.setItem('doctorName', this.doctorName);
       this.$router.push('/prescription/print');
     },
   },

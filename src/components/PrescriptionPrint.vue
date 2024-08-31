@@ -44,7 +44,7 @@
       <img src="@/assets/prescription-logo.png" class="rounded-circle" width="100" height="100">
     </div>
     <div class="mb-4 pb-2 d-flex justify-content-between align-items-center border-bottom border-black">
-      <p class="fs-3 mb-0"><strong>دكتور/</strong>{{ doctorName }}</p>
+      <p class="fs-3 mb-0"><strong>دكتور/</strong>{{ prescription.doctorName }}</p>
    
       <p v-if="prescription.patientName" class="patient-name fs-3"><strong>اسم المريض/</strong> {{
         prescription.patientName }}</p>
@@ -89,10 +89,8 @@ export default {
     prescription() {
       const storedPrescription = localStorage.getItem('prescription');
       return storedPrescription ? JSON.parse(storedPrescription) : {};
-    },
-    doctorName() {
-      return "ياسر حنا ثابت";
-    },
+    }
+    
   },
   data() {
     return {
