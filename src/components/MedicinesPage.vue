@@ -9,8 +9,7 @@
     <!-- Add Medicine Form -->
     <div class="row justify-content-center py-2 g-4">
       <div class="col-8 bo rounded-2">
-        <h2 class="mb-3">إضافة دواء جديد</h2>
-        <form action="">
+        <h2 class="mb-3">إضافة دواء جديد</h2>       
           <div class="mb-3">
             <label for="medicineName" class="form-label fs-4">اسم الدواء:</label>
             <input v-model="newMedicineName" type="text" class="form-control py-3" id="medicineName"
@@ -18,8 +17,7 @@
           </div>
           <button @click="addMedicine" class="btn btn-success w-25 py-3 mt-2 fw-bold fs-5">
             <i class="fas fa-plus"></i> إضافة الدواء
-          </button>
-        </form>
+          </button>     
       </div>
       <div class="col-8 py-3">
         <h2 class="mb-4">قائمة الأدوية</h2>
