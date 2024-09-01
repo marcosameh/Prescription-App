@@ -1,43 +1,3 @@
-<!-- <template>
-    
-  <div class="container mt-5">
-    <div class="mb-4 d-flex justify-content-between align-items-center">
-      <h1 class="display-4 text-black fw-medium">{{ doctorName }}</h1>
-      <p v-if="prescription.patientName" class="patient-name fs-3"><strong>اسم المريض/</strong> {{
-        prescription.patientName }}</p>
-    </div>
-    <div class="bach-btn text-start mt-5" style="margin-left: 200px;">
-      <router-link to="/prescription/new" class="btn back-button mb-3 py-3 text-white"
-        style="font-size: 18px; background-color: rgb(221, 148, 12);">
-        عودة للخلف
-      </router-link>
-    </div>
-
-
-    <div class="row justify-content-center px-5 py-3">
-
-      <div class="col-8">
-
-
-        <div v-for="(medicament, index) in prescription.medicaments" :key="index" class="mb-4">
-          <div class="mb-3" v-if="medicament.name">
-            <p class="medicament-name fs-3 "><strong>الدواء:</strong> {{ medicament.name }}</p>
-          </div>
-          <div class="mb-3" v-if="medicament.notes">
-            <p class="medicament-notes fs-3"><strong>ملاحظات : </strong> {{ medicament.notes }}</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="text-center mt-4">
-      <button @click="printPrescription" class="btn btn-primary py-3 px-4 fs-4">
-        <i class="fas fa-print"></i> طباعة الروشتة
-      </button>
-    </div>
-  </div>
-</template> -->
 <template>
   <div  :class="{'container-fluid': isPrintMode, 'container mt-5': !isPrintMode}">
     <div class="img d-flex justify-content-center mb-3">
@@ -51,7 +11,7 @@
     </div>
 
     <div class="row px-5 py-3 mt-5" :class="isPrintMode ? '' : 'justify-content-center'">
-      <div :class="isPrintMode?'col-12':'col-8'">
+      <div :class="isPrintMode?'col-12':'col-12'">
         <div v-for="(medicament, index) in prescription.medicaments" :key="index" class=" mb-4 d-flex">
           <div class="mb-3" v-if="medicament.name">
             <p class="medicament-name fs-3"><strong>{{ medicament.name }}</strong> </p>
@@ -75,9 +35,12 @@
   
     </div>
     <div class="footer" :class="isPrintMode?'footer-position':''">
-         <div class="  border-black border-top ">
-          <p class="fs-3"><strong>العنوان/</strong> شارع النصر امام بنك مصر الإسلامي بجوار بنزيمة عويد</p>
-          <p class="fs-3"><strong>التليفون/</strong> 01026903168</p>
+         <div class="border-black border-top d-flex">
+          <p class="fs-3"><strong>العنوان/</strong> شارع النصر امام بنك مصر الإسلامي بجوار بنزيمة عويد
+          <br>
+          <strong>التليفون/</strong> 01026903168
+          </p>
+
          </div>
     </div>
   </div>

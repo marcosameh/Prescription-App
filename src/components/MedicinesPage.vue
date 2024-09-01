@@ -20,7 +20,7 @@
           </button>     
       </div>
       <div class="col-8 py-3">
-        <h2 class="mb-4">قائمة الأدوية</h2>
+        <h2 class="mb-4 fw-bold fs-1 text-center">قائمة الأدوية</h2>
         <ul class="list-group pe-0">
           <li v-for="(medicine, index) in medicines" :key="index"
             class="list-group-item ">

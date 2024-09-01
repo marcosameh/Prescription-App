@@ -22,7 +22,7 @@
               placeholder="ادخل اسم المريض" />
           </div>
         </div>
-    
+
         <div v-for="(medicament, index) in medicaments" :key="index" class="mb-4 border rounded-3 p-3">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="mb-0">الدواء {{ index + 1 }}</h2>
@@ -41,20 +41,26 @@
           </div>
           <div class="mb-3">
             <label for="notes" class="form-label fs-4">ملاحظات:</label>
-            <textarea v-model="medicament.notes" class="form-control py-3" id="notes" rows="2" placeholder="ادخل ملاحظات"
-              style="resize: none;"></textarea>
+            <textarea v-model="medicament.notes" class="form-control py-3" id="notes" rows="2"
+              placeholder="ادخل ملاحظات" style="resize: none;"></textarea>
           </div>
         </div>
 
-       <div class="btns mb-4 text-center">
-        <button @click="addMedicament" class="btn btn-success ms-3 py-3 px-4">
-          <i class="fas fa-plus"></i> اضافة دواء
-        </button>
+        <div class="btns mb-4 d-flex justify-content-between">
+          
+            <router-link to="/medicines" class="btn back-button py-3 text-white"
+              style="font-size: 18px; background-color: rgb(221, 148, 12);">
+                عودة لقائمة الادوية
+            </router-link>
+       
+          <button @click="addMedicament" class="btn btn-success py-3 px-4">
+            <i class="fas fa-plus"></i> اضافة دواء
+          </button>
 
-        <button @click="generatePrescription" class="btn btn-primary py-3 px-4">
-          <i class="fas fa-file-prescription"></i> طباعة الروشتة
-        </button>
-       </div>
+          <button @click="generatePrescription" class="btn btn-primary py-3 px-4">
+            <i class="fas fa-file-prescription"></i> طباعة الروشتة
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -90,7 +96,7 @@ export default {
 
 <style scoped>
 label {
-  color: #555;
+  color: #180202;
 }
 
 input, textarea, select {
@@ -110,7 +116,4 @@ button {
   font-size: 18px;
 }
 
-.back-button {
-  background-color: #dd940c !important;
-}
 </style>
