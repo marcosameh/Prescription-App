@@ -43,7 +43,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
@@ -55,9 +54,16 @@ export default {
   methods: {
     addMedicine() {
       if (this.newMedicineName.trim() !== '') {
-        this.medicines.push({ name: this.newMedicineName.trim() });
-        this.newMedicineName = '';
-        this.saveMedicinesToLocalStorage();
+        const exists = this.medicines.some(
+          (medicine) => medicine.name === this.newMedicineName.trim()
+        );
+        if (exists) {
+          alert('هذا الدواء موجود بالفعل');
+        } else {
+          this.medicines.push({ name: this.newMedicineName.trim() });
+          this.newMedicineName = '';
+          this.saveMedicinesToLocalStorage();
+        }
       }
     },
     editMedicine(index) {
