@@ -36,7 +36,7 @@
     </div>
     <div class="footer" :class="isPrintMode?'footer-position':''">
          <div class="border-black border-top d-flex">
-          <p class="fs-3"><strong>العنوان/</strong> شارع النصر امام بنك مصر الإسلامي بجوار بنزيمة عويد
+          <p class="fs-3"><strong>العنوان/</strong> شارع النصر امام بنك مصر الإسلامي بجوار بنزينة عويد
           <br>
           <strong>التليفون/</strong> 01026903168
           </p>
